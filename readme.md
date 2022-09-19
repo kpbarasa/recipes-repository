@@ -143,7 +143,6 @@ ATLAS_URI =
 	    @desc    test usrl
 <br> 
         @route   GET: /test
-
 	</li>
 </ul>
 
