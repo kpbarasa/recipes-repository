@@ -7,32 +7,52 @@ This is ab simple ack-end user manager is a system built using the model viewer 
 The system should expose endpoints that provide the following services:
 1. Save recipe: 
         @ recipe
+</br>
         @ steps
+</br>
         @ nutrition
+</br>
         @ ingridients
+</br>
         @ tools
+</br>
         @ cuisine
+</br>
         @ Diet
+</br>
         @ Category
+</br>
         @ Sub Category
    
 2. Delete recipe,
         @ steps
+</br>
         @ nutrition
+</br>
         @ ingridients
+</br>
         @ tools
+</br>
         @ cuisine
+</br>
         @ Diet
 
 3. Fetch recipes, Filter:
         @ recipe id
+</br>
         @ ingridients
+</br>
         @ cuisine
+</br>
         @ Diet
+</br>
         @ tags
+</br>
 
 5. Access control (route authentication through sessions)
-8. Reporting (morgan)
+</br>
+
+6. Reporting (morgan)
 
 
 <h5>Software ======================================================================================================================================================= </h5>
