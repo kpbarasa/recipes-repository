@@ -5,6 +5,8 @@ This is ab simple ack-end user manager is a system built using the model viewer 
 </p>
 
 The system should expose endpoints that provide the following services:
+</br>
+
 1. Save recipe: 
         @ recipe
 </br>
@@ -24,6 +26,7 @@ The system should expose endpoints that provide the following services:
 </br>
         @ Sub Category
 </br>
+
    
 2. Delete recipe,
 </br>
@@ -40,6 +43,7 @@ The system should expose endpoints that provide the following services:
         @ Diet
 </br>
 
+
 3. Fetch recipes, Filter:
 </br>
         @ recipe id
@@ -53,8 +57,10 @@ The system should expose endpoints that provide the following services:
         @ tags
 </br>
 
+
 5. Access control (route authentication through sessions)
 </br>
+
 
 6. Reporting (morgan)
 
