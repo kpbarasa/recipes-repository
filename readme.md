@@ -147,13 +147,13 @@ Dependences:
 
 <h5>4 Config files  =================================================================================</h5>
 
-1. .Config.env:
+1. Config.env:
 
-# <h5>Node Config</h5>
-NODE_ENV="development"
-PORT = 5000
-PROD_PORT = 
-ATLAS_URI = 
+# <b>Node Config</b>
+    NODE_ENV="development"
+    PORT = 5000
+    PROD_PORT = 
+    ATLAS_URI = 
 <br> 
 
 2. db.js:
