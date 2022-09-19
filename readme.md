@@ -8,53 +8,53 @@ The system should expose endpoints that provide the following services:
 </br>
 
 1. Save recipe: 
-        @ recipe
+            @ recipe
 </br>
-        @ steps
+            @ steps
 </br>
-        @ nutrition
+            @ nutrition
 </br>
-        @ ingridients
+            @ ingridients
 </br>
-        @ tools
+            @ tools
 </br>
-        @ cuisine
+            @ cuisine
 </br>
-        @ Diet
+            @ Diet
 </br>
-        @ Category
+            @ Category
 </br>
-        @ Sub Category
+            @ Sub Category
 </br>
 
    
 2. Delete recipe,
 </br>
-        @ steps
+            @ steps
 </br>
-        @ nutrition
+            @ nutrition
 </br>
-        @ ingridients
+            @ ingridients
 </br>
-        @ tools
+            @ tools
 </br>
-        @ cuisine
+            @ cuisine
 </br>
-        @ Diet
+            @ Diet
 </br>
 
 
 3. Fetch recipes, Filter:
 </br>
-        @ recipe id
+            @ recipe id
 </br>
-        @ ingridients
+            @ ingridients
 </br>
-        @ cuisine
+            @ cuisine
 </br>
-        @ Diet
+            @ Diet
 </br>
-        @ tags
+            @ tags
 </br>
 
 
