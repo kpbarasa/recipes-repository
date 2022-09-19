@@ -139,8 +139,11 @@ ATLAS_URI =
 <ul>
 	<li>
 		@controller  test 
+<br> 
 	    @desc    test usrl
+<br> 
         @route   GET: /test
+
 	</li>
 </ul>
 
@@ -148,8 +151,11 @@ ATLAS_URI =
 <ul>
 	<li>
 		@controller  register 
+<br> 
 	    @desc    Register user 
+<br> 
         @route   POST: /register
+<br> 
         @Model   /models/user.data.model
 	</li>
 </ul>
@@ -182,24 +188,24 @@ ATLAS_URI =
 </ul>
 
 
-<h5>7 middleware  ==================================================================================== </h5> 
+<h5> 7 middleware  ==================================================================================== </h5> 
 	auth-session.middleware:
 <br> 
    "Authenticates users account  end points using session variables"
 <br> 
 
-<h5>8 Git ignore files =============================================================================== </h5> 
+<h5> 8 Git ignore files =============================================================================== </h5> 
 
 1.    /node_module
 2.    /config/config.env
 
 
-<h5>9 Config files  =================================================================================</h5>
+<h5> 9 Config files  =================================================================================</h5>
 
 1.    /db.js
 2.    /config/config.env
 
 
-<h5>10 Assets  ======================================================================================</h5>
+<h5> 10 Assets  ======================================================================================</h5>
 
   
