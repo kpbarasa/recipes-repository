@@ -96,7 +96,6 @@ Dependences:
 
 
 <h5>3 models (Data models)  =========================================================================</h5>
-
       Recipe Models:
 </br>
       1.  Recipe  (recipe.model.js)       
@@ -124,11 +123,10 @@ Dependences:
       12. Recipe  (recipe-diet.model.js)
 </br>
       13. Recipe  (recipe-alergies.model.js)
+<br>
 <br>  
-
       Recipe user Models:
 </br>
-
       1.  User  (account-user-session.model.js)
 </br>
       2.  User  (account-user.model.js)
@@ -151,7 +149,7 @@ Dependences:
 
 1. .Config.env:
 
-# Node Config
+# <h5>Node Config</h5>
 NODE_ENV="development"
 PORT = 5000
 PROD_PORT = 
