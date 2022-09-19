@@ -3,37 +3,41 @@ const router = express.Router()
 
 const checkID = require("../middleware/check_id")
 
-const { 
-    saveRecipe,
-    updateRecipe,
-    deleteRecipe,
-    saveRecipeCat,
-    saveRecipeSubCat,
-    saveRecipeTag,
-    saveIngridient,
-    deleteIngridient,
-    deleteRecipeCat,
-    deleteRecipeSubCat,
-    deleteRecipeTag
-} = require('../controllers/admin.controllers')
+// RECIPE CONTROLLERS
+const recipeAdminControllers = require('../controllers/recipe-admin-controllers/admin.controllers');
 
 
-router.post('/add/recipe', saveRecipe)
+// RECIPE ROUTES
+router.post('/add/recipe', recipeAdminControllers.saveRecipe)
+router.post('/update/recipe/:id', checkID, recipeAdminControllers.updateRecipe)
+router.get('/delete/recipe/:id', checkID, recipeAdminControllers.deleteRecipe)
 
-router.post('/update/recipe/:recipeId', checkID, updateRecipe)
+// CATEGORIES 
+router.post('/add/cat', recipeAdminControllers.saveRecipeCat)
+router.post('/delete/cat/:id', recipeAdminControllers.deleteRecipeCat)
 
-router.get('/delete/recipe/:recipeId', checkID, deleteRecipe)
+// SUB CATEGORIES 
+router.post('/add/sub-cat', recipeAdminControllers.saveRecipeSubCat)
+router.post('/delete/sub-cat/:id', recipeAdminControllers.deleteRecipeSubCat)
 
-router.post('/add/category', saveRecipeCat)
+// TAGS 
+router.post('/add/tags', recipeAdminControllers.saveRecipeTag)
+router.post('/delete/tags/:id', recipeAdminControllers.deleteRecipeTag)
 
-router.post('/add/sub-category/', saveRecipeSubCat)
+// CUISINES 
+router.post('/add/cuisine', recipeAdminControllers.saveCuisine)
+router.post('/delete/cuisine/:id', recipeAdminControllers.deleteCuisine)
 
-router.post('/delete/category/:catId', checkID, deleteRecipeCat)
+// DIETS 
+router.post('/add/diet', recipeAdminControllers.saveDiet)
+router.post('/delete/diet/:id', recipeAdminControllers.deleteDiet)
 
-router.post('/delete/sub-category/:subCatId', checkID, deleteRecipeSubCat)
+// TOOLS
+router.post('/add/tool', recipeAdminControllers.saveTools)
+router.post('/delete/tool/:id', checkID, recipeAdminControllers.deleteTool)
 
-router.post('/add/tags', saveRecipeTag)
-
-router.post('/delete/tags/:tagId', checkID, deleteRecipeTag)
+// INGRIDIENTS 
+router.post('/add/ingridient', recipeAdminControllers.saveIngridient)
+router.post('/delete/ingridient/:id', checkID, recipeAdminControllers.deleteIngridient)
 
 module.exports = router

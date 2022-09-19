@@ -1,54 +1,20 @@
-express = require('express')
+const dotenv = require('dotenv')
 
-const cors = require('cors')
-const mongoose = require('mongoose')
+//CONFIGURATION FILE
+require("dotenv").config();
+// LOAD CONFIG FILE
+dotenv.config({ path: './config/config.env' })
 
-const PORT = process.env.PORT || 5000
-const atlasURI = process.env.ATLAS_URI || "mongodb+srv://paulBarasa:iZn9gxbNyXFusFN0@cluster0.4p1ws.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const PORT = process.env.PORT ;
 
-const app = express()
+// MONGO DB CONNECTION
+const connectDB = require('./config/db')
+connectDB()
 
-app.use(cors())
-
-// parse form data
-app.use(express.urlencoded({ extended: false }))
-
-// Parse Json 
-app.use(express.json())
-
-// Mongo db connection string  starts here
-mongoose.connect(atlasURI,{
-    useNewUrlParser:true, useUnifiedTopology:true
-}, err => {
-    if(err){
-
-        console.log('Error un able Connected to MongoDB !!!')
-
-    }
-    else{
-
-        console.log('Connected to MongoDB !!!')
-
-    }
-})
-
-const connection = mongoose.connection;
-
-connection.once('open', () => {
-  console.log("MongoDB database connection established successfully"); 
-})
-// Mongo db connection string  ends here
-
-// Routes begin here 
-const routesRecipies = require('./routes/recipe.routes')
-const routesAdmin = require('./routes/admin.routes')
-
-app.use('/recipies/api', routesRecipies)
-app.use('/recipies/api/admin', routesAdmin)
-// Routes end here 
+const app = require('./app')
 
 app.listen(PORT, () => {
-    console.log("app listening on PORT: "+PORT);
+    console.log("app listening on PORT: " + PORT);
 })
 
 module.exports = app

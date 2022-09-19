@@ -3,13 +3,13 @@ const mongoose = require("mongoose")
 module.exports = (req, res, next) => {
     try {
 
-        let recipeId = req.params.recipeId
+        let id = req.params.id
 
-        if (mongoose.Types.ObjectId.isValid(recipeId)) {
+        if (mongoose.Types.ObjectId.isValid(id)) {
             next()
         }
         else {
-            return res.status(404).json({ message: " invalid id Error: Cast to ObjectId failed for value " })
+            return res.status(400).json({ message: " invalid id Error: Cast to ObjectId failed for value " })
         }
 
     } catch (error) {
