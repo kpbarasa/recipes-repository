@@ -23,6 +23,7 @@ The system should expose endpoints that provide the following services:
         @ Category
 </br>
         @ Sub Category
+</br>
    
 2. Delete recipe,
         @ steps
@@ -36,6 +37,7 @@ The system should expose endpoints that provide the following services:
         @ cuisine
 </br>
         @ Diet
+</br>
 
 3. Fetch recipes, Filter:
         @ recipe id
