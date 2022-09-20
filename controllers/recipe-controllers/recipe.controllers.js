@@ -9,6 +9,7 @@ const recipes_tags_model = require('../../models/recipe-tags.model')
 const recipes_categories_model = require('../../models/recipe-categories.model')
 const recipes_sub_categories_model = require('../../models/recipe-sub-categories.model')
 
+const getRedisCache = require('../../reddis/reddis-get-cache')
 
 // ===============================================================================================================================================
 //  GET RECIPE CONTROLLS =========================================================================================================================
@@ -16,18 +17,26 @@ const recipes_sub_categories_model = require('../../models/recipe-sub-categories
 
 const getRecipes = async (req, res) => { // Get recipes
 
-    await recipeDataModel.find()
-        .then(recipeRes => {
+    const cachedData = await getRedisCache();
 
-            if (recipeRes === null) return res.json({ message: "Sorry there is no recipes available right now" })
+    if (cachedData) res.json({ message: "success", recipes: cachedData }); // Get cached recipes
 
-            else if (Object.keys(recipeRes).length === 0) throw "Sorry there is no recipes available right now";
+    else {
+        await recipeDataModel.find()
+            .then(recipeRes => {
 
-            console.log(recipeRes);
-            res.json({ message: "success", recipes: recipeRes })
+                if (recipeRes === null) return res.json({ message: "Sorry there is no recipes available right now" })
 
-        })
-        .catch(err => res.status(400).json('Error: ' + err + " Sorry unable to get recipes right now"))
+                else if (Object.keys(recipeRes).length === 0) throw "Sorry there is no recipes available right now";
+
+                console.log(recipeRes);
+                console.log(getRedisCache());
+                res.json({ message: "success", recipes: recipeRes })
+
+            })
+            .catch(err => res.status(400).json('Error: ' + err + " Sorry unable to get recipes right now"))
+    }
+
 }
 
 const getRecipe = (req, res) => { // Get recipes : recipe id
@@ -523,7 +532,7 @@ const getRecipeNutrition = (req, res) => { // Get Nutrition : recipe id
 
 
 module.exports = {
-    
+
     //  GET RECIPE CONTROLLS =========================================================================================================================
     getRecipe,
     getRecipes,
@@ -532,26 +541,26 @@ module.exports = {
     getRecipeTag,
     getRecipeCuisine,
     getRecipeDiet,
-    
-    
+
+
     //  RECIPE CATEGORIES CONTROLLS ========================================================================================================================
     getAllCats,
     getCat,
     getAllSubCats,
     getSubCat,
-    
+
     //  RECIPE TAGS CONTROLLS ========================================================================================================================
     getAllTags,
     getTag,
-    
+
     //  RECIPE CUISINE CONTROLLS ======================================================================================================================
     getAllCuisines,
     getCuisine,
-    
+
     //  RECIPE DIETS CONTROLLS ========================================================================================================================
     getAllDiets,
     getDiet,
-    
+
     //  RECIPE STEPS, TOOLS, INGRIDIENTS, NUTRITION, CONTROLLS ==================================================================================================================
     getRecipeSteps,
     getRecipeIngridient,

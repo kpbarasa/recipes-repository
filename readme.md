@@ -28,7 +28,7 @@ The system should expose endpoints that provide the following services:
             </br>
 
    
-2. Delete recipe,
+2. Delete recipe:
             </br>
              steps
             </br>
@@ -44,7 +44,7 @@ The system should expose endpoints that provide the following services:
             </br>
 
 
-3. Fetch recipes, Filter:
+3. Fetch/Cache recipes, Filter recipes:
             </br>
              recipe id
             </br>
@@ -82,6 +82,8 @@ Dependences:
 6.  express-fileupload
 8.  mongoose
 9.  morgan
+10. redis
+11. ioredis
 
 <h5>Database</h5>
 •	Mongo DB 

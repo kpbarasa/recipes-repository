@@ -6,9 +6,10 @@ const recipeControllers = require("../controllers/recipe-controllers/recipe.cont
 
 // MIDLEWARE
 const checkID = require("../middleware/check_id")
+const redisCache = require("../middleware/redis-cache.middleware")
 
 // RECIPE ROUTES
-router.get('/get/recipes', recipeControllers.getRecipes) // GET ALL RECIPES
+router.get('/get/recipes', redisCache, recipeControllers.getRecipes) // GET ALL RECIPES
 router.get('/get/recipe/:id', checkID, recipeControllers.getRecipe) // FILTER BY RECIPE  ID
 router.get('/get/recipes/tag/:id', checkID, recipeControllers.getRecipeTag) // FILTER BY TAG ID
 router.get('/get/recipes/cat/:id', checkID, recipeControllers.getRecipeCat) // FILTER BY  CAT ID
