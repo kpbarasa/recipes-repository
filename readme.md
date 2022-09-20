@@ -448,9 +448,9 @@ Recipe Models:
 
 
 # 7 middleware  
-	auth-session.middleware:
+auth-session.middleware.js
 <br> 
-   "Authenticates users account  end points using session variables"
+Description: "Authenticates users account  end points using session variables"
 <br> 
 
 # 8 Git ignore files
