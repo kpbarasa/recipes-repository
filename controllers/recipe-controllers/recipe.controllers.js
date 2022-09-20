@@ -17,8 +17,10 @@ const getRedisCache = require('../../reddis/reddis-get-cache')
 
 const getRecipes = async (req, res) => { // Get recipes
 
+    // Get cahecd recipe
     const cachedData = await getRedisCache();
 
+    // If recipe is cached send response
     if (cachedData) res.json({ message: "success", recipes: cachedData }); // Get cached recipes
 
     else {
@@ -34,29 +36,40 @@ const getRecipes = async (req, res) => { // Get recipes
                 res.json({ message: "success", recipes: recipeRes })
 
             })
-            .catch(err => res.status(400).json('Error: ' + err + " Sorry unable to get recipes right now"))
+            .catch(error => res.status(400).json('Error: ' + error + " Sorry unable to get recipes right now"))
     }
 
 }
 
-const getRecipe = (req, res) => { // Get recipes : recipe id
+const getRecipe = async (req, res) => { // Get recipes : recipe id
 
     try {
 
         let recipeId = req.params.id
 
-        recipeDataModel.findOne({ _id: recipeId }, function (err, recipeRes) {
+        // Get cahecd recipe
+        const cachedData = await getRedisCache();
 
-            if (err) throw new Error();
+        // If recipe is cached send response
+        if (cachedData) {
 
-            if (recipeRes === null) return res.json({ message: "Sorry there is no recipes available right now" });
+            const cachedRecipe = cachedData.filter(recipes => recipes.recipe_id === recipeId)
+            res.json({ status: "success", message: "success", recipe: cachedRecipe });
 
-            else if (Object.keys(recipeRes).length === 0) throw "Sorry there is no recipes available right now";
+        }
+        else {
+            recipeDataModel.findOne({ _id: recipeId }, function (err, recipeRes) {
 
-            res.json({ status: "success", message: "success", recipe: recipeRes });
-            console.log(recipeRes);
+                if (err) throw new Error();
 
-        })
+                if (recipeRes === null) return res.json({ message: "Sorry there is no recipes available right now" });
+
+                else if (Object.keys(recipeRes).length === 0) throw "Sorry there is no recipes available right now";
+
+                res.json({ status: "success", message: "success", recipe: recipeRes });
+
+            })
+        }
 
     } catch (error) {
 
@@ -65,92 +78,147 @@ const getRecipe = (req, res) => { // Get recipes : recipe id
     }
 }
 
-const getRecipeCat = (req, res) => { // Get Recipe : category id
+const getRecipeCat = async (req, res) => { // Get Recipe : category id
 
     try {
 
         let recipeCatId = req.params.id
 
-        recipeDataModel.findOne({ recipe_cat_id: recipeCatId }, function (err, recipeRes) {
+        // Get cahecd recipe
+        const cachedData = await getRedisCache();
 
-            if (recipeRes === null) return res.json({ message: "Sorry there is no recipes available right now" });
+        // If recipe is cached send response
+        if (cachedData) {
 
-            else if (Object.keys(recipeRes).length === 0) throw "Sorry there is no recipes available right now";
+            const cachedRecipe = cachedData.filter(recipes => recipes.recipe_cat_id === recipeCatId)
+            res.json({ status: "success", message: "success", recipe: cachedRecipe });
 
-            else return res.json({ message: "success", recipes: recipeRes });
+        }
+        else {
 
-        })
+            recipeDataModel.findOne({ recipe_cat_id: recipeCatId }, function (err, recipeRes) {
+
+                if (recipeRes === null) return res.json({ message: "Sorry there is no recipes available right now" });
+
+                else if (Object.keys(recipeRes).length === 0) throw "Sorry there is no recipes available right now";
+
+                else return res.json({ message: "success", recipes: recipeRes });
+
+            })
+
+        }
+
 
     } catch (error) {
 
-        res.status(400).json('Error: ' + err + "Sorry there is no recipes available right now");
+        res.status(400).json('Error: ' + error + "Sorry there is no recipes available right now");
 
     }
 }
 
-const getRecipeSubCat = (req, res) => {// Get Recipe : sub category id
+const getRecipeSubCat = async (req, res) => { // Get Recipe : sub category id
 
     try {
 
         let recipeCatId = req.params.catId
 
-        recipeDataModel.findOne({ recipe_sub_cat_id: id }, function (err, recipeRes) {
+        // Get cahecd recipe
+        const cachedData = await getRedisCache();
 
-            if (recipeRes === null) return res.json({ message: "Sorry there is no recipes available right now" });
+        // If recipe is cached send response
+        if (cachedData) {
 
-            else if (Object.keys(recipeRes).length === 0) throw "Sorry there is no recipes available right now";
+            const cachedRecipe = cachedData.filter(recipes => recipes.recipe_sub_cat_id === recipeCatId)
+            res.json({ status: "success", message: "success", recipe: cachedRecipe });
 
-            else return res.json({ message: "success", recipes: recipeRes });
+        }
+        else {
 
-        })
+            recipeDataModel.findOne({ recipe_sub_cat_id: id }, function (err, recipeRes) {
+
+                if (recipeRes === null) return res.json({ message: "Sorry there is no recipes available right now" });
+
+                else if (Object.keys(recipeRes).length === 0) throw "Sorry there is no recipes available right now";
+
+                else return res.json({ message: "success", recipes: recipeRes });
+
+            })
+
+        }
 
     } catch (error) {
 
-        res.status(400).json('Error: ' + err + "Sorry there is no recipes available right now");
+        res.status(400).json('Error: ' + error + "Sorry there is no recipes available right now");
 
     }
 }
 
-const getRecipeTag = (req, res) => { // Get Recipe : tag id
+const getRecipeTag = async (req, res) => { // Get Recipe : tag id
 
     try {
 
         let recipeCatId = req.params.id
-        console.log(recipeCatId)
 
-        recipeDataModel.findOne({ recipe_tag_id: recipeCatId }, function (err, recipeRes) {
+        // Get cahecd recipe
+        const cachedData = await getRedisCache();
 
-            if (recipeRes === null) return res.json({ message: "Sorry there is no recipes available right now" });
+        // If recipe is cached send response
+        if (cachedData) {
 
-            else if (Object.keys(recipeRes).length === 0) throw "Sorry there is no recipes available right now";
+            const cachedRecipes = cachedData.filter(recipes => recipes.recipe_tag_id.includes(recipeCatId))
+            res.json({ status: "success", message: "success", recipe: cachedRecipes });
 
-            else return res.json({ message: "success", recipes: recipeRes });
+        }
+        else {
 
-        })
+            recipeDataModel.findOne({ recipe_tag_id: recipeCatId }, function (err, recipeRes) {
+
+                if (recipeRes === null) return res.json({ message: "Sorry there is no recipes available right now" });
+
+                else if (Object.keys(recipeRes).length === 0) throw "Sorry there is no recipes available right now";
+
+                else return res.json({ message: "success", recipes: recipeRes });
+
+            })
+
+        }
 
     } catch (error) {
 
-        res.status(400).json('Error: ' + err + "Sorry there is no recipes available right now")
+        res.status(400).json('Error: ' + error + "Sorry there is no recipes available right now")
 
     }
 }
 
-const getRecipeCuisine = (req, res) => { // Get Recipe : cuisine id
+const getRecipeCuisine = async (req, res) => { // Get Recipe : cuisine id
 
     try {
 
         let cuisineId = req.params.id
-        console.log(cuisineId)
 
-        recipeDataModel.findOne({ recipe_cuisine_id: cuisineId }, function (err, recipeRes) {
+        // Get cahecd recipe
+        const cachedData = await getRedisCache();
 
-            if (recipeRes === null) return res.json({ message: "Sorry there is no recipes available right now" });
+        // If recipe is cached send response
+        if (cachedData) {
 
-            else if (Object.keys(recipeRes).length === 0) throw "Sorry there is no recipes available right now";
+            const cachedRecipes = cachedData.filter(recipes => recipes.recipe_cuisine_id === cuisineId);
+            res.json({ status: "success", message: "success", recipe: cachedRecipes });
 
-            else return res.json({ message: "success", recipes: recipeRes });
+        }
+        else {
 
-        })
+            recipeDataModel.findOne({ recipe_cuisine_id: cuisineId }, function (err, recipeRes) {
+
+                if (recipeRes === null) return res.json({ message: "Sorry there is no recipes available right now" });
+
+                else if (Object.keys(recipeRes).length === 0) throw "Sorry there is no recipes available right now";
+
+                else return res.json({ message: "success", recipes: recipeRes });
+
+            })
+
+        }
 
     } catch (error) {
 
@@ -159,22 +227,35 @@ const getRecipeCuisine = (req, res) => { // Get Recipe : cuisine id
     }
 }
 
-const getRecipeDiet = (req, res) => { // Get Recipe : diet id
+const getRecipeDiet = async (req, res) => { // Get Recipe : diet id
 
     try {
 
         let dietId = req.params.id
-        console.log(cuisineId)
 
-        recipes_diet_model.findOne({ recipe_diet_id: dietId }, function (err, recipeRes) {
+        // Get cahecd recipe
+        const cachedData = await getRedisCache();
 
-            if (recipeRes === null) return res.json({ message: "Sorry there is no recipes available right now" });
+        // If recipe is cached send response
+        if (cachedData) {
 
-            else if (Object.keys(recipeRes).length === 0) throw "Sorry there is no recipes available right now";
+            const cachedRecipes = cachedData.filter(recipes => recipes.recipe_diet_id === dietId);
+            res.json({ status: "success", message: "success", recipe: cachedRecipes });
 
-            else return res.json({ message: "success", recipes: recipeRes });
+        }
+        else {
 
-        })
+            recipes_diet_model.findOne({ recipe_diet_id: dietId }, function (err, recipeRes) {
+
+                if (recipeRes === null) return res.json({ message: "Sorry there is no recipes available right now" });
+
+                else if (Object.keys(recipeRes).length === 0) throw "Sorry there is no recipes available right now";
+
+                else return res.json({ message: "success", recipes: recipeRes });
+
+            })
+
+        }
 
     } catch (error) {
 

@@ -44,7 +44,7 @@ The system should expose endpoints that provide the following services:
             </br>
 
 
-3. Fetch/Cache recipes, Filter recipes:
+3. Fetch/Filter/Cache(reddis) recipes:
             </br>
              recipe id
             </br>
@@ -56,12 +56,9 @@ The system should expose endpoints that provide the following services:
             </br>
              tags     
 
+4. Access control (route authentication through sessions)
 
-5. Access control (route authentication through sessions)
-
-
-
-6. Reporting (morgan)
+5. Reporting (morgan js)
 
 
 # Software 
@@ -450,10 +447,15 @@ Recipe Models:
 
 
 # 7 middleware  
-auth-session.middleware.js
-<br> 
-Description: "Authenticates users account  end points using session variables"
-<br> 
+   1. auth-session.middleware.js
+      <br> 
+      Description: "Authenticates users account  end points using session variables"
+      <br>  
+
+   2. redis-cache.middleware.js
+      <br> 
+      Description: "On fetching recipe data from middleware checks if database is empty if not pushes recipes to reddis"
+      <br> 
 
 # 8 Git ignore files
 

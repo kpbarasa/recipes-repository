@@ -56,9 +56,21 @@ const recipesSchema = new Schema({
     type: String,
     required: true
   },
+  recipe_cuisine_id:{
+    type: String,
+  },
+  recipe_diet_id:{
+    type: String,
+  },
   recipe_ratting:{
     type: Number,
     required: true
+  },
+  recipe_views:{
+    type: Number
+  },
+  recipe_img_url:{
+    type: String
   }
 });
 
