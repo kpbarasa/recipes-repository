@@ -1,4 +1,4 @@
-<h4>Project: User manager :<h4>
+# Project: User manager :
 
 <p>
 This is ab simple ack-end user manager is a system built using the model viewer controller frame work using Node js, Express js and Mongo Atlas DB. The system exposes endpoints that allow for user access control, password recovery, Session management, user data management (CRUD operations on user data). The endpoints are secured using middleware and session cookies to authorize access. 
@@ -9,57 +9,56 @@ The system should expose endpoints that provide the following services:
 
 1. Save recipe: 
              recipe
-</br>
+            </br>
              steps
-</br>
+            </br>
              nutrition
-</br>
+            </br>
              ingridients
-</br>
+            </br>
              tools
-</br>
+            </br>
              cuisine
-</br>
+            </br>
              Diet
-</br>
+            </br>
              Category
-</br>
+            </br>
              Sub Category
-</br>
+            </br>
 
    
 2. Delete recipe,
-</br>
+            </br>
              steps
-</br>
+            </br>
              nutrition
-</br>
+            </br>
              ingridients
-</br>
+            </br>
              tools
-</br>
+            </br>
              cuisine
-</br>
+            </br>
              Diet
-</br>
+            </br>
 
 
 3. Fetch recipes, Filter:
-</br>
+            </br>
              recipe id
-</br>
+            </br>
              ingridients
-</br>
+            </br>
              cuisine
-</br>
+            </br>
              Diet
-</br>
-             tags
-</br>
+            </br>
+             tags     
 
 
 5. Access control (route authentication through sessions)
-</br>
+
 
 
 6. Reporting (morgan)
@@ -159,7 +158,7 @@ Dependences:
 3. passport.js
 </br>
 
-<h5>5 Controllers  ==============================================================================</h5>
+# 5 Controllers  ==============================================================================
 
 1.  GET RECIPE CONTROLLS (recipe.controllers.js)
 <ul>
@@ -424,7 +423,7 @@ Dependences:
 <br> 
 
 
-<h5> 6 error handlers(handlers)  ===================================================================== </h5> 
+# 6 error handlers(handlers)  =====================================================================
 
 1. errorHandler.js
 <ul>
@@ -449,24 +448,23 @@ Dependences:
 </ul>
 
 
-<h5> 7 middleware  ==================================================================================== </h5> 
+# 7 middleware  ==================================================================================== 
 	auth-session.middleware:
 <br> 
    "Authenticates users account  end points using session variables"
 <br> 
 
-<h5> 8 Git ignore files =============================================================================== </h5> 
+# 8 Git ignore files ==============================================================================
 
 1.    /node_module
 2.    /config/config.env
 
 
-<h5> 9 Config files  =================================================================================</h5>
+# 9 Config files  =================================================================================
 
 1.    /db.js
 2.    /config/config.env
 
 
-<h5> 10 Assets  ======================================================================================</h5>
 
   
