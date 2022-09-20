@@ -64,12 +64,12 @@ The system should expose endpoints that provide the following services:
 6. Reporting (morgan)
 
 
-# Software ======================================================================================================================================================= 
+# Software 
 
 1. Node js 
 2. Express js
 
-# Libraries =======================================================================================================================================================
+# Libraries 
 
 Dev dependences:
 1.  nodemon 
@@ -87,7 +87,6 @@ Dependences:
 •	Mongo DB 
 
 # Components
-=================================================================================================================================================
 
 # 1  Server(server.js) 
 
@@ -143,7 +142,7 @@ Recipe Models:
 </br>
 
 
-# 4 Config files  =================================================================================
+# 4 Config files  
 
 1. Config.env:
 
@@ -158,7 +157,7 @@ Recipe Models:
 3. passport.js
 </br>
 
-# 5 Controllers  ==============================================================================
+# 5 Controllers  
 
 1.  GET RECIPE CONTROLLS (recipe.controllers.js)
 <ul>
@@ -423,7 +422,7 @@ Recipe Models:
 <br> 
 
 
-# 6 error handlers(handlers)  =====================================================================
+# 6 error handlers(handlers)  
 
 1. errorHandler.js
 <ul>
@@ -448,19 +447,19 @@ Recipe Models:
 </ul>
 
 
-# 7 middleware  ==================================================================================== 
+# 7 middleware  
 	auth-session.middleware:
 <br> 
    "Authenticates users account  end points using session variables"
 <br> 
 
-# 8 Git ignore files ==============================================================================
+# 8 Git ignore files
 
 1.    /node_module
 2.    /config/config.env
 
 
-# 9 Config files  =================================================================================
+# 9 Config files  
 
 1.    /db.js
 2.    /config/config.env
