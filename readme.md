@@ -162,27 +162,147 @@ Dependences:
 
 <h5>5 Controllers  ==============================================================================</h5>
 
-1.  (admin.controllers.js)
+1.  GET RECIPE CONTROLLS (recipe.controllers.js)
 <ul>
 	<li>
-		@controller  test 
-<br> 
-	    @desc    test usrl
-<br> 
-        @route   GET: /test
+		@controller:  getRecipes 
+<br>	@desc:        get all recipes
+<br>    @route:       GET: /get/recipes
+	</li>
+	<li>
+		@controller:  getRecipe 
+<br>	@desc:        get recipe 
+<br>    @route:       GET: /get/recipe/:id
+	</li>
+	<li>
+		@controller:  getRecipeCat 
+<br>	@desc:        test usrl
+<br>    @route:       GET: /get/recipes/cat/:id
+	</li>
+	<li>
+		@controller:  getRecipeSubCat 
+<br>	@desc:        test usrl
+<br>    @route:       GET: /get/recipes/subcat/:id
+	</li>
+	<li>
+		@controller:  getRecipeTag 
+<br>	@desc:        test usrl
+<br>    @route:       GET: /get/recipes/tag/:id
+	</li>
+	<li>
+		@controller:  getRecipeCuisine 
+<br>	@desc:        test usrl
+<br>    @route:       GET: /get/recipes/cuisine/:id
+	</li>
+	<li>
+		@controller:  getRecipeDiet 
+<br>	@desc:        test usrl
+<br>    @route:       GET: /get/recipes/diet/:id
 	</li>
 </ul>
 
-2.  (recipe.controllers.js)
+2.  RECIPE CATEGORIES CONTROLLS (recipe.controllers.js)
 <ul>
 	<li>
-		@controller  register 
-<br> 
-	    @desc    Register user 
-<br> 
-        @route   POST: /register
-<br> 
-        @Model   /models/user.data.model
+		@controller:  getAllCats 
+<br>	@desc:        get all recipe categories
+<br>    @route:       GET: /get/cats
+	</li>
+	<li>
+		@controller:  getCat 
+<br>	@desc:        get category
+<br>    @route:       GET: /get/cat/:id
+	</li>
+	<li>
+		@controller:  getAllSubCats 
+<br>	@desc:        get all recipe sub categories
+<br>    @route:       GET: /get/sub-cats
+	</li>
+	<li>
+		@controller:  getSubCat 
+<br>	@desc:        get all recipe sub category
+<br>    @route:       GET: /get/sub-cat/:id
+	</li>
+</ul>
+
+3.  RECIPE TAGS CONTROLLS  (recipe.controllers.js)
+<ul>
+	<li>
+		@controller:  getAllTags 
+<br>	@desc:        get all recipe tags
+<br>    @route:       GET: /get/tags
+	</li>
+	<li>
+		@controller:  getTag 
+<br>	@desc:        get all recipe tag
+<br>    @route:       GET: /get/tag/:id
+	</li>
+</ul>
+
+4.  RECIPE CUISINE CONTROLLS  (recipe.controllers.js)
+<ul>
+	<li>
+		@controller:  getAllCuisines 
+<br>	@desc:        get all cuisines
+<br>    @route:       GET: /get/cuisines
+	</li>
+	<li>
+		@controller:  getCuisine 
+<br>	@desc:        get  cuisine
+<br>    @route:       GET: /get/cuisines/:id
+	</li>
+</ul>
+
+4.  RECIPE DIETS CONTROLLS  (recipe.controllers.js)
+<ul>
+	<li>
+		@controller:  getAllCuisines 
+<br>	@desc:        get all diets
+<br>    @route:       GET: /get/diets
+	</li>
+	<li>
+		@controller:  getCuisine 
+<br>	@desc:        get  diet
+<br>    @route:       GET: /get/diet/:id
+	</li>
+</ul>
+
+5.  RECIPE STEPS, TOOLS, INGRIDIENTS, NUTRITION, CONTROLLS  (recipe.controllers.js)
+<ul>
+	<li>
+		@controller:  getRecipeSteps 
+<br>	@desc:        get recipe steps
+<br>    @route:       GET: /get/steps/:id
+	</li>
+	<li>
+		@controller:  getRecipeIngridient 
+<br>	@desc:        get recipe ingridient
+<br>    @route:       GET: /get/ingridients/:id
+	</li>
+	<li>
+		@controller:  getAllIngridients 
+<br>	@desc:        get recipe ingridients
+<br>    @route:       GET: /get/ingridients
+	</li>
+	<li>
+		@controller:  getRecipeTools 
+<br>	@desc:        get recipe tool
+<br>    @route:       GET: /get/tools/:id'
+	</li>
+	<li>
+		@controller:  getAllTools 
+<br>	@desc:        get recipe tools
+<br>    @route:       GET: /get/tools
+	</li>
+	<li>
+		@controller:  getALLNutrition 
+<br>	@desc:        get recipe nutrition 
+<br>    @route:       GET: /test
+	</li>
+	<li>
+		@controller:  getRecipeNutrition 
+<br>	@desc:        get recipe nutrition 
+<br>    @route:       GET: /get/nutrition/:id
 	</li>
 </ul>
 
