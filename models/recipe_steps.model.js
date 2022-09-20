@@ -3,12 +3,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const recipes_steps_schema = new Schema({
-    recipe_step_id: {
-        type: String,
-        required: true,
-        unique: true,
-        index: { unique: true }
-    },
     recipe_ref_id: {
         type: String,
         required: true,

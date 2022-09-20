@@ -15,7 +15,9 @@ const recipes_diet_model = require("../../models/recipe-diet.model");
 //  RECIPE CONTROLLS =============================================================================================================================
 // ===============================================================================================================================================
 const saveRecipe = async (req, res, next) => { // SAVE RECIPE
-    const recipeData = req.body[0]
+    const recipeData = req.body
+    
+    const userID = !req.session.sessId ? "author" : req.session.sessId;
 
     // console.log(JSON.stringify(req.body))
 
@@ -45,19 +47,14 @@ const saveRecipe = async (req, res, next) => { // SAVE RECIPE
     const recipe_serving = recipeData.info.recipe_serving
     const recipe_ingridients_id = arrIngridientsIds.join()
     const recipe_tool_id = toolIds.join()
-    const recipe_author = "recipe_author"
-    const tagIds_arr = recipeData.tags
-    const recipe_tag_id = tagIds_arr.join()
+    const recipe_author = userID
+    const recipe_tag_id = recipeData.tags
     const recipe_cuisine_id = recipeData.meta.recipe_cuisine_id
     const recipe_diet_id = recipeData.meta.recipe_diet_id
     const recipe_cat_id = recipeData.meta.recipe_cat_id
     const recipe_sub_cat_id = recipeData.meta.recipe_sub_cat_id
     const recipe_date = newDate
-    const recipe_ratting_one = 0
-    const recipe_ratting_two = 0
-    const recipe_ratting_three = 0
-    const recipe_ratting_four = 0
-    const recipe_ratting_five = 0
+    const recipe_ratting = 0
 
     const newRecipe = new recipes_model({     //SAVE RECIPE  HERE
         recipe_title,
@@ -78,18 +75,17 @@ const saveRecipe = async (req, res, next) => { // SAVE RECIPE
     })
 
     await newRecipe.save()
-        .then(() => {     //SAVE RECIPE STEPS HERE
+        .then(async() => {     //SAVE RECIPE STEPS HERE
+
+            const recipeData = recipes_model.findOne({recipe_title:recipe_title})
 
             recipeStepsData.map((data) => {
-
-                const recipe_step_id = uuid.v4()
-                const recipe_ref_id = recipe_id
+                const recipe_ref_id = recipeData._id
                 const recipe_step_no = data.recipe_step_no
                 const recipe_step_description = data.recipe_step_description
                 const recipe_step_videoUrl = data.recipe_step_videoUrl
 
                 const newRecipeSteps = new recipe_steps_data_model({
-                    recipe_step_id,
                     recipe_ref_id,
                     recipe_step_no,
                     recipe_step_description,
