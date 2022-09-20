@@ -94,7 +94,7 @@ Dependences:
 # 2  App(app.js) 
 
 # 3 models (Data models)  
-      Recipe Models:
+Recipe Models:
 </br>
       1.  Recipe  (recipe.model.js)       
 </br>
