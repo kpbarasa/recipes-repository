@@ -3,29 +3,21 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const recipes_steps_schema = new Schema({
-    recipe_step_id: {
-        type: String,
-        required: true,
-        unique: true,
-        index: { unique: true }
-    },
     recipe_ref_id: {
-        type: String,
-        // unique: true,
-        required: true,
+        type: mongoose.Schema.Types.ObjectId,
+        required: "recipe recipe step no is required !"
     },
     recipe_step_no: {
         type: String,
-        // unique: true,
-        required: true,
+        unique: true,
+        required: "recipe step no is required !"
     },
     recipe_step_description: {
         type: String,
-        required: true,
+        required: "recipe step description is required !"
     },
     recipe_step_videoUrl: {
-        type: String,
-        required: true,
+        type: String
     },
 });
 

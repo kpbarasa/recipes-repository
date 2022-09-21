@@ -466,7 +466,54 @@ Recipe Models:
 # 9 Config files  
 
 1.    /db.js
-2.    /config/config.env
+2.    /config/config.env\
+
+#  10 Data ojects
+
+1.  Recipe Data object
+#
+
+{
+    "recipe_info":{
+                    "recipe_title":"test tittle", 
+                    "recipe_description":"test description", 
+                    "recipe_coock_time":"1", 
+                    "recipe_prep_time":"1",
+                    "recipe_serving":1,
+                    "recipe_cuisine_id":"62ff159c2e39b4cc611000b4",
+                    "recipe_diet_id":"62ff159c2e39b4cc611000b4",
+                    "recipe_cat_id":"62ff159c2e39b4cc611000b4",
+                    "recipe_sub_cat_id":"62ff159c2e39b4cc611000b4"
+                 },
+    "recipe_ingridients_id_list":[
+                              "62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4"
+                            ],
+    "recipe_tool_id_list":[
+                        "62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4"
+                     ],
+    "recipe_tag_id_list":[
+                        "62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4"
+                     ],
+    "recipe_steps":[
+                      { "recipe_step_no":1, "recipe_step_description":"test step description 1", "recipe_step_videoUrl":"htttp://test"},
+                      { "recipe_step_no":2, "recipe_step_description":"test step description 2", "recipe_step_videoUrl":"htttp://test"},
+                      { "recipe_step_no":3, "recipe_step_description":"test step description 3", "recipe_step_videoUrl":"htttp://test"},
+                      { "recipe_step_no":4, "recipe_step_description":"test step description 4", "recipe_step_videoUrl":"htttp://test"},
+                      { "recipe_step_no":5, "recipe_step_description":"test step description 5", "recipe_step_videoUrl":"htttp://test"},
+                      { "recipe_step_no":6, "recipe_step_description":"test step description 6", "recipe_step_videoUrl":"htttp://test"}
+                   ],
+    "recipe_nutrition":{
+                            "calories":1000, 
+                            "sodium":1000, 
+                            "fat":1000, 
+                            "protein":1000,
+                            "carbs":1000,
+                            "fiber":1000
+                        }
+                   
+}
+
+#
 
 
 

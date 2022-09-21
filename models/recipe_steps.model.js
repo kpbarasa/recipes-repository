@@ -4,12 +4,11 @@ const Schema = mongoose.Schema;
 
 const recipes_steps_schema = new Schema({
     recipe_ref_id: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
     },
     recipe_step_no: {
         type: String,
-        unique: true,
         required: true,
     },
     recipe_step_description: {

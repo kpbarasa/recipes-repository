@@ -15,45 +15,32 @@ const recipes_diet_model = require("../../models/recipe-diet.model");
 //  RECIPE CONTROLLS =============================================================================================================================
 // ===============================================================================================================================================
 const saveRecipe = async (req, res, next) => { // SAVE RECIPE
-    const recipeData = req.body
+    // const recipeData = req.body
     
-    const userID = !req.session.sessId ? "author" : req.session.sessId;
+    const { recipe_info, recipe_ingridients_id_list, recipe_tool_id_list, recipe_tag_id_list, recipe_steps, recipe_nutrition } = req.body;
+
+    console.log(recipe_info);
+
+    // const userID = !req.session.sessId ? "author" : req.session.sessId;
+    const userID = "author";
 
     // console.log(JSON.stringify(req.body))
 
-    const newDate = new Date();
+    if (!req.body) throw "please check that the correct fields have been filled: recipe title, recipe description, recipe_prep_time"
 
-    if (!req.body) throw new Error("please check that the correct fields have been filled: recipe title, recipe description, recipe_prep_time")
-
-    // // LIST DATA 
-    const recipeStepsData = recipeData.steps
-    const recipeToolsData = recipeData.tools
-    const recipe_ingridients = recipeData.ingridients
-
-    // GET INGRIDIENTS IDs 
-    let arrIngridientsIds = []
-    recipe_ingridients.map(res => arrIngridientsIds.push(res.recipe_ingridient_id))
-
-    // GET TOOLS IDs 
-    let toolIds = []
-    recipeToolsData.map(res => toolIds.push(res.tool_id))
-
-    console.log(recipe_ingridients);
-
-    const recipe_title = recipeData.info.recipe_title
-    const recipe_description = recipeData.info.recipe_description
-    const recipe_coock_time = recipeData.info.recipe_coock_time
-    const recipe_prep_time = recipeData.info.recipe_prep_time
-    const recipe_serving = recipeData.info.recipe_serving
-    const recipe_ingridients_id = arrIngridientsIds.join()
-    const recipe_tool_id = toolIds.join()
     const recipe_author = userID
-    const recipe_tag_id = recipeData.tags
-    const recipe_cuisine_id = recipeData.meta.recipe_cuisine_id
-    const recipe_diet_id = recipeData.meta.recipe_diet_id
-    const recipe_cat_id = recipeData.meta.recipe_cat_id
-    const recipe_sub_cat_id = recipeData.meta.recipe_sub_cat_id
-    const recipe_date = newDate
+    const recipe_title = recipe_info.recipe_title
+    const recipe_description = recipe_info.recipe_description
+    const recipe_coock_time = recipe_info.recipe_coock_time
+    const recipe_prep_time = recipe_info.recipe_prep_time
+    const recipe_serving = recipe_info.recipe_serving
+    const recipe_cuisine_id = recipe_info.recipe_cuisine_id
+    const recipe_diet_id = recipe_info.recipe_diet_id
+    const recipe_cat_id = recipe_info.recipe_cat_id
+    const recipe_sub_cat_id = recipe_info.recipe_sub_cat_id
+    const recipe_ingridients_id = JSON.stringify(recipe_ingridients_id_list)
+    const recipe_tool_id = JSON.stringify(recipe_tool_id_list)
+    const recipe_tag_id = JSON.stringify(recipe_tag_id_list)
     const recipe_ratting = 0
 
     const newRecipe = new recipes_model({     //SAVE RECIPE  HERE
@@ -70,36 +57,14 @@ const saveRecipe = async (req, res, next) => { // SAVE RECIPE
         recipe_tag_id,
         recipe_cuisine_id,
         recipe_diet_id,
-        recipe_date,
-        recipe_ratting
     })
 
     await newRecipe.save()
-        .then(async() => {     //SAVE RECIPE STEPS HERE
+        .then(async () => {     //SAVE NUTRITION HERE
 
-            const recipeData = recipes_model.findOne({recipe_title:recipe_title})
+            const recipeData = await recipes_model.findOne({ recipe_title: recipe_title });
 
-            recipeStepsData.map((data) => {
-                const recipe_ref_id = recipeData._id
-                const recipe_step_no = data.recipe_step_no
-                const recipe_step_description = data.recipe_step_description
-                const recipe_step_videoUrl = data.recipe_step_videoUrl
-
-                const newRecipeSteps = new recipe_steps_data_model({
-                    recipe_ref_id,
-                    recipe_step_no,
-                    recipe_step_description,
-                    recipe_step_videoUrl
-                })
-
-                newRecipeSteps.save()
-
-            })
-
-
-        })
-        .then(() => {     //SAVE NUTRITION HERE
-            const recipe_ref_id = recipe_id
+            const recipe_ref_id = recipeData._id
             const calories = recipeData.nutrition.recipe_calories
             const sodium = recipeData.nutrition.recipe_sodium
             const fat = recipeData.nutrition.recipe_fat
@@ -107,7 +72,7 @@ const saveRecipe = async (req, res, next) => { // SAVE RECIPE
             const carbs = recipeData.nutrition.recipe_carbs
             const fiber = recipeData.nutrition.recipe_fiber
 
-            const newTools = new recipe_nutrition_data_model({
+            const recipeNutrition = new recipe_nutrition_data_model({
                 recipe_ref_id,
                 calories,
                 sodium,
@@ -116,19 +81,70 @@ const saveRecipe = async (req, res, next) => { // SAVE RECIPE
                 carbs,
                 fiber
             })
-            newTools.save()
+            recipeNutrition.save()
                 .catch((error) => next(error))
 
 
         })
+        // .then(async () => {     //SAVE RECIPE STEPS HERE
+
+        //     const recipeData = await recipes_model.findOne({ recipe_title: recipe_title });
+        //     console.log(recipeData._id);
+
+        //     recipe_steps.map((data) => {
+        //         const recipe_ref_id = recipeData._id
+        //         const recipe_step_no = data.recipe_step_no
+        //         const recipe_step_description = data.recipe_step_description
+        //         const recipe_step_videoUrl = data.recipe_step_videoUrl
+
+        //         const newRecipeSteps = new recipe_steps_data_model({
+        //             recipe_ref_id,
+        //             recipe_step_no,
+        //             recipe_step_description,
+        //             recipe_step_videoUrl
+        //         })
+
+        //         newRecipeSteps.save()
+
+        //     })
+
+
+        // })
+        // .then(async () => {     //SAVE NUTRITION HERE
+
+        //     const recipeData = await recipes_model.findOne({ recipe_title: recipe_title });
+
+        //     const recipe_ref_id = recipeData._id
+        //     const calories = recipeData.nutrition.recipe_calories
+        //     const sodium = recipeData.nutrition.recipe_sodium
+        //     const fat = recipeData.nutrition.recipe_fat
+        //     const protein = recipeData.nutrition.recipe_protein
+        //     const carbs = recipeData.nutrition.recipe_carbs
+        //     const fiber = recipeData.nutrition.recipe_fiber
+
+        //     const recipeNutrition = new recipe_nutrition_data_model({
+        //         recipe_ref_id,
+        //         calories,
+        //         sodium,
+        //         fat,
+        //         protein,
+        //         carbs,
+        //         fiber
+        //     })
+        //     recipeNutrition.save()
+        //         .catch((error) => next(error))
+
+
+        // })
         .then(() => res.json({ // RESPONSE HERE
 
             status: "success",
-            message: "successfully saved recipe",
+            message: "successfully saved recipe"
+
         }))
         .catch((error) => res.json({
-            status: "error",
-            message: "Unsuccessfully saved recipe",
+            status: "fail",
+            message: "Faild to saved recipe",
             error
         }))
 
@@ -222,11 +238,11 @@ const updateRecipe = async (req, res, next) => { // UPDATE RECIPE
                 }))
                 .catch((error) => next(error))
         })
-        .catch(error => res.status(400).json({ 
-            status: 'fail', 
-            error_status: res.status, 
-            error 
-    }))
+        .catch(error => res.status(400).json({
+            status: 'fail',
+            error_status: res.status,
+            error
+        }))
 
 }
 
@@ -309,10 +325,10 @@ const saveRecipeCat = async (req, res) => {
 
     } catch (error) {
 
-        res.status(400).json({   
-            status: 'fail', 
-            error_status: res.status, 
-            error 
+        res.status(400).json({
+            status: 'fail',
+            error_status: res.status,
+            error
         })
     }
 }
@@ -341,10 +357,10 @@ const saveRecipeSubCat = async (req, res) => {
 
     } catch (error) {
 
-        res.status(400).json({   
-            status: 'fail', 
-            error_status: res.status, 
-            error 
+        res.status(400).json({
+            status: 'fail',
+            error_status: res.status,
+            error
         })
     }
 }
@@ -570,7 +586,7 @@ const deleteDiet = (req, res) => {
 
 // ===============================================================================================================================================
 //  RECIPE STEPS DATA ============================================================================================================================
-// ===============================================================================================================================================
+// ==============================================================================================================================================
 
 const updateRecipeSteps = async (req, res, next) => { // UPDATE RECIPE
 

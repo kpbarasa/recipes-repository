@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const recipes_nutrition_schema = new Schema({
     recipe_ref_id: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
     },
     calories: {
