@@ -3,12 +3,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const recipes_diet_schema = new Schema({
-    diet_id: {
-        type: String,
-        required: true,
-        unique: true,
-        index: { unique: true }
-    },
     diet_title: {
         type: String,
         required: true,

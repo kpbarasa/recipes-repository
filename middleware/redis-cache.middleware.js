@@ -5,6 +5,8 @@ const recipeFormat = require('../utils/recipe-format')
 
 module.exports = async (req, res, next) => {
 
+        // redisClient.flushdb(); // Clear cache
+
         const recipesData = await recipes_model.find()
 
         let arrRecipe =[];
@@ -22,7 +24,8 @@ module.exports = async (req, res, next) => {
                 recipe.recipe_tag_id, 
                 recipe.recipe_cuisine_id, 
                 recipe.recipe_diet_id,
-                0));
+                0
+                ));
 
         })
         

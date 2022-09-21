@@ -8,25 +8,31 @@ const recipes_nutrition_schema = new Schema({
         required: true,
     },
     calories: {
-        type: Number
+        type: Number,
+        required: true
     },
     sodium: {
-        type: Number
+        type: Number,
+        required: true
     },
     fat: {
-        type: Number
+        type: Number,
+        required: true
     },
     protein: {
-        type: Number
+        type: Number,
+        required: true
     },
     carbs: {
-        type: Number
+        type: Number,
+        required: true
     },
     fiber: {
-        type: Number
+        type: Number,
+        required: true
     }
 });
 
-const recipes_nutrition_model = mongoose.model('recipe_nutrition_repo', recipes_nutrition_schema);
+const recipes_nutrition_model = mongoose.model('recipe_nutrition', recipes_nutrition_schema);
 
 module.exports = recipes_nutrition_model;

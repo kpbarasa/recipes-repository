@@ -9,6 +9,7 @@ const redisClient = new Redis({
 const redisCache = async (recipes) => {
 
     try {
+        // redisClient.flushdb(); // Clear cache
 
         if (!recipes) throw "Error no recipe";
 

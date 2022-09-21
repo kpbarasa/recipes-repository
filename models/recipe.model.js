@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const recipesSchema = new Schema({
-
+  _id:{
+    type: mongoose.Schema.Types.ObjectId,
+    required: "recipe Id is required !",
+  },
   recipe_title:{
     type: String,
     required: "recipe title is required !",
@@ -65,7 +68,8 @@ const recipesSchema = new Schema({
   }
   
 },{
-  timestamps: true
+  timestamps: true,
+  _id : false 
 });
 
 const recipes_model = mongoose.model('recipes', recipesSchema);

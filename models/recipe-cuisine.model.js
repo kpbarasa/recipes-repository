@@ -3,12 +3,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const recipes_cuisine_schema = new Schema({
-    cuisine_id: {
-        type: String,
-        required: true,
-        unique: true,
-        index: { unique: true }
-    },
     cuisine_title: {
         type: String,
         required: true,

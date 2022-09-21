@@ -8,7 +8,7 @@ const recipes_steps_schema = new Schema({
         required: true,
     },
     recipe_step_no: {
-        type: String,
+        type:Number,
         required: true,
     },
     recipe_step_description: {
