@@ -4,7 +4,7 @@
 This is ab simple ack-end user manager is a system built using the model viewer controller frame work using Node js, Express js and Mongo Atlas DB. The system exposes endpoints that allow for the following features: 
 <ul>
    <li>
-        Authentication and authorisation microservices(JWT), 
+        User/Route Authentication and authorisation microservices(JWT), 
    </li>
    <li>
         Session management(Express sessions),
@@ -13,7 +13,17 @@ This is ab simple ack-end user manager is a system built using the model viewer 
         Request - response and application logging
    </li>
    <li>
-        Error logging,
+        Error handling logging:
+            </br>
+            + Endpoints/Route errors
+            </br>
+            + Mongoose errors
+            </br>
+            + development errors
+            </br>
+            + production errors
+            </br>
+            + recipe steps
    </li>
    <li>
         password recovery,
@@ -43,6 +53,18 @@ This is ab simple ack-end user manager is a system built using the model viewer 
             </br>
             + Images
    </li>
+   <li>
+        Storing and managing User recipe Collections
+   </li>
+   <li>
+        Storing and managing User alergies
+   </li>
+   <li>
+        Storing and managing User diets
+   </li>
+   <li>
+        Storing and managing User recipes
+   </li>
 </ul>  
 
 The endpoints are secured using middleware and session cookies to authorize access. 
@@ -66,6 +88,8 @@ The system should expose endpoints that provide the following services:
 # Software 
 
 1. Node js 
+2. Atlas mongo db 
+3. Redis
 
 # Libraries 
 
@@ -105,29 +129,27 @@ Recipe Data Models:
 </br>
       1.  Recipe  (recipe.model.js)       
 </br>
-      2.  Recipe  (recipe_steps.model.js)
+      2.  Steps  (recipe_steps.model.js)
 </br>
-      3.  Recipe  (recipe-tags.model.js)
+      3.  Tags  (recipe-tags.model.js)
 </br>
-      4.  Recipe  (recipe-tools.model.js)
+      4.  Tools  (recipe-tools.model.js)
 </br>
-      5.  Recipe  (recipe-ingridients.model.js)
+      5.  Ingridients  (recipe-ingridients.model.js)
 </br>
-      6.  Recipe  (recipe-cuisine.model.js)
+      6.  Cuisine  (recipe-cuisine.model.js)
 </br>
-      7.  Recipe  (recipe-nutrition.model.js)
+      7.  Nutrition  (recipe-nutrition.model.js)
 </br>
-      8.  Recipe  (categories.model.js)
+      8.  Categories  (categories.model.js)
 </br>
-      9.  Recipe  (recipe-sub-categories.model.js)
+      9.  Sub-Categories  (recipe-sub-categories.model.js)
 </br>
-      10. Recipe  (recipe-steps.model.js)
+      10. Reviews  (recipe-reviews.model.js)
 </br>
-      11. Recipe  (recipe-reviews.model.js)
+      11. Diet  (recipe-diet.model.js)
 </br>
-      12. Recipe  (recipe-diet.model.js)
-</br>
-      13. Recipe  (recipe-alergies.model.js)
+      12. Alergies  (recipe-alergies.model.js)
 <br>
 <br>  
       Recipe user Models:
