@@ -19,28 +19,29 @@ This is ab simple ack-end user manager is a system built using the model viewer 
         password recovery,
    </li>
    <li>
-        Storing and managing recipe data(
-             recipe
+        Storing and managing recipe data:
             </br>
-             steps
+            + recipe steps
             </br>
-             nutrition
+            + nutrition
             </br>
-             ingridients
+            + ingridients
             </br>
-             tools
+            + tools
             </br>
-             cuisine
+            + cuisine
             </br>
-             Diet
+            + Diet
             </br>
-             Category
+            + Category
             </br>
-             Sub Category
-            </br>).
+            + Sub Category
+            </br>
    </li>
    <li>
-        Storing and managing recipe media
+        Storing and managing recipe media:
+            </br>
+            + Images
    </li>
 </ul>  
 
@@ -65,7 +66,6 @@ The system should expose endpoints that provide the following services:
 # Software 
 
 1. Node js 
-2. Express js
 
 # Libraries 
 
@@ -88,12 +88,20 @@ Dependences:
 
 # Components
 
-# 1  Server(server.js) 
+   <h3>1  Server(server.js) </h3>
 
-# 2  App(app.js) 
+#  
 
-# 3 models (Data models)  
-Recipe Models:
+   <h3>2.  App(app.js)  </h3>
+
+#  
+
+   <h3>3.  models (Data models)   </h3>
+
+#  
+
+<h3>3.  models (Data models)   </h3>
+Recipe Data Models:
 </br>
       1.  Recipe  (recipe.model.js)       
 </br>
@@ -157,7 +165,7 @@ Recipe Models:
 3. passport.js
 </br>
 
-# 5 Controllers  
+# 5 Routes/Controllers  
 
 1.  GET RECIPE CONTROLLS (recipe.controllers.js)
 <ul>
