@@ -1,13 +1,25 @@
 # Project: User manager :
 
 <p>
-This is ab simple ack-end user manager is a system built using the model viewer controller frame work using Node js, Express js and Mongo Atlas DB. The system exposes endpoints that allow for user access control, password recovery, Session management, user data management (CRUD operations on user data). The endpoints are secured using middleware and session cookies to authorize access. 
-</p>
-
-The system should expose endpoints that provide the following services:
-</br>
-
-1. Save recipe: 
+This is ab simple ack-end user manager is a system built using the model viewer controller frame work using Node js, Express js and Mongo Atlas DB. The system exposes endpoints that allow for the following features: 
+<ul>
+   <li>
+        Authentication and authorisation microservices(JWT), 
+   </li>
+   <li>
+        Session management(Express sessions),
+   </li>
+   <li>
+        Request - response and application logging
+   </li>
+   <li>
+        Error logging,
+   </li>
+   <li>
+        password recovery,
+   </li>
+   <li>
+        Storing and managing recipe data(
              recipe
             </br>
              steps
@@ -25,36 +37,25 @@ The system should expose endpoints that provide the following services:
              Category
             </br>
              Sub Category
-            </br>
+            </br>).
+   </li>
+   <li>
+        Storing and managing recipe media
+   </li>
+</ul>  
 
-   
+The endpoints are secured using middleware and session cookies to authorize access. 
+</p>
+
+The system should expose endpoints that provide the following services:
+</br>
+
+
+1. Save recipe
+
 2. Delete recipe:
-            </br>
-             steps
-            </br>
-             nutrition
-            </br>
-             ingridients
-            </br>
-             tools
-            </br>
-             cuisine
-            </br>
-             Diet
-            </br>
 
-
-3. Fetch/Filter/Cache(reddis) recipes:
-            </br>
-             recipe id
-            </br>
-             ingridients
-            </br>
-             cuisine
-            </br>
-             Diet
-            </br>
-             tags     
+3. Fetch/Filter/Cache(reddis) recipes:  
 
 4. Access control (route authentication through sessions)
 
@@ -469,52 +470,5 @@ Recipe Models:
 2.    /config/config.env\
 
 #  10 Data ojects
-
-1.  Recipe Data object
-#
-
-{
-    "recipe_info":{
-                    "recipe_title":"test tittle", 
-                    "recipe_description":"test description", 
-                    "recipe_coock_time":"1", 
-                    "recipe_prep_time":"1",
-                    "recipe_serving":1,
-                    "recipe_cuisine_id":"62ff159c2e39b4cc611000b4",
-                    "recipe_diet_id":"62ff159c2e39b4cc611000b4",
-                    "recipe_cat_id":"62ff159c2e39b4cc611000b4",
-                    "recipe_sub_cat_id":"62ff159c2e39b4cc611000b4"
-                 },
-    "recipe_ingridients_id_list":[
-                              "62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4"
-                            ],
-    "recipe_tool_id_list":[
-                        "62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4"
-                     ],
-    "recipe_tag_id_list":[
-                        "62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4","62ff159c2e39b4cc611000b4"
-                     ],
-    "recipe_steps":[
-                      { "recipe_step_no":1, "recipe_step_description":"test step description 1", "recipe_step_videoUrl":"htttp://test"},
-                      { "recipe_step_no":2, "recipe_step_description":"test step description 2", "recipe_step_videoUrl":"htttp://test"},
-                      { "recipe_step_no":3, "recipe_step_description":"test step description 3", "recipe_step_videoUrl":"htttp://test"},
-                      { "recipe_step_no":4, "recipe_step_description":"test step description 4", "recipe_step_videoUrl":"htttp://test"},
-                      { "recipe_step_no":5, "recipe_step_description":"test step description 5", "recipe_step_videoUrl":"htttp://test"},
-                      { "recipe_step_no":6, "recipe_step_description":"test step description 6", "recipe_step_videoUrl":"htttp://test"}
-                   ],
-    "recipe_nutrition":{
-                            "calories":1000, 
-                            "sodium":1000, 
-                            "fat":1000, 
-                            "protein":1000,
-                            "carbs":1000,
-                            "fiber":1000
-                        }
-                   
-}
-
-#
-
-
 
   
