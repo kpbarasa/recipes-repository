@@ -1,7 +1,11 @@
 # Project: User manager :
 
 <p>
-This is ab simple ack-end user manager is a system built using the model viewer controller frame work using Node js, Express js and Mongo Atlas DB. The system exposes endpoints that allow for the following features: 
+This is ab simple ack-end user manager is a system built using the model viewer controller frame work using Node js, Express js and Mongo Atlas DB. The system exposes endpoints that allow for the following
+
+<h3> features: </h3>
+
+#
 <ul>
    <li>
         User/Route Authentication and authorisation microservices(JWT), 
@@ -124,7 +128,6 @@ Dependences:
 
 #  
 
-<h3>3.  models (Data models)   </h3>
 Recipe Data Models:
 </br>
       1.  Recipe  (recipe.model.js)       
@@ -171,9 +174,9 @@ Recipe Data Models:
       8.  User  (user-recipes.model.js)
 </br>
 
+<h3> 4 Config files    </h3>
 
-# 4 Config files  
-
+#
 1. Config.env:
 
 <b>Node Config</b>
@@ -187,8 +190,9 @@ Recipe Data Models:
 3. passport.js
 </br>
 
-# 5 Routes/Controllers  
+<h3> 5 Routes/Controllers </h3> 
 
+#
 1.  GET RECIPE CONTROLLS (recipe.controllers.js)
 <ul>
 	<li>
