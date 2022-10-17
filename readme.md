@@ -1,7 +1,7 @@
 # Project: User manager :
 
 <p>
-This is ab simple ack-end user manager is a system built using the model viewer controller frame work using Node js, Express js and Mongo Atlas DB. The system exposes endpoints that allow for the following
+This is ab simple back-end user manager is a system built using  using Node js, Express js and Mongo Atlas DB. The system exposes endpoints that allow for the management(save, update,delete, fetch) of recipes, Access controll and reporting
 
 <h3> features: </h3>
 
